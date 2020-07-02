@@ -19,7 +19,7 @@
 
 ---
 
-[소스 코드 확인](https://github.com/flexboni/algorithm_c/blob/master/1강/selectionSort.cpp)
+[소스 코드 확인](https://github.com/flexboni/algorithm_c/blob/master/2%EA%B0%95/selectionSort.cpp)
 
 ---
 
