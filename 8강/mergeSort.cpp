@@ -1,57 +1,77 @@
 #include <stdio.h>
 
-int number = 10;
-int data[] = {1, 10, 5, 8, 7, 6, 4, 3, 2, 9};
+int number = 8;
 
-void show()
+int size;
+int sorted[8]; // 정렬 배열은 반드시 전역 변수로 선언
+int count = 0;
+
+void merge(int a[], int m, int middle, int n)
 {
-    int i;
-    for (i = 0; i < number; i++)
+    int i = m;
+    int j = middle + 1;
+    int k = m;
+
+    // 작은 순서대로 배열에 삽입
+    while (i <= middle && j <= n)
     {
-        printf("%d ", data[i]);
+        if (a[i] <= a[j])
+        {
+            sorted[k] = a[j];
+            i++;
+        }
+        else
+        {
+            sorted[k] = a[j];
+            j++;
+        }
+        k++;
+    }
+    // 남은 데이터도 삽입
+    if (i > middle)
+    {
+        for (int t = j; t <= n; t++)
+        {
+            sorted[k] = a[t];
+            k++;
+        }
+    }
+    else
+    {
+        for (int t = i; t <= middle; t++)
+        {
+            sorted[k] = a[t];
+            k++;
+        }
+    }
+    // 정렬된 배열을 삽입
+    for (int t = m; t <= n; t++)
+    {
+        a[t] = sorted[t];
     }
 }
 
-void quickSort(int *data, int start, int end)
+void mergeSort(int a[], int m, int n)
 {
-    if (start >= end) // 원소가 1개인 경우 그대로 두기
-        return;
-
-    int key = start; // 키는 첫 번째 원소
-    int i = start + 1, j = end, temp;
-
-    while (i <= j) // 엇갈릴 때까지 반복
+    // 이 외의 경우는 크기가 1 개인 경우
+    if (m < n)
     {
-        while (i <= end && data[i] <= data[key]) // 키 값보다 큰 값을 만날 때까지
-        {
-            i++;
-        }
-        while (j > start && data[j] >= data[key]) // 키 값보다 작은 값을 만날 때까지
-        {
-            j--;
-        }
-        if (i > j) // 현재 엇갈린 상태면 키 값과 교체
-        {
-            temp = data[j];
-            data[j] = data[key];
-            data[key] = temp;
-        }
-        else // 엇갈리지 않았다면 i와 j를 교체
-        {
-            temp = data[i];
-            data[i] = data[j];
-            data[j] = temp;
-        }
+        int middle = (m + n) / 2;
+        mergeSort(a, m, middle);
+        mergeSort(a, middle + 1, n);
+        merge(a, m, middle, n);
     }
-
-    quickSort(data, start, j - 1);
-    quickSort(data, j + 1, end);
 }
 
 int main(void)
 {
-    quickSort(data, 0, number - 1);
-    show();
+    int array[number] = {7, 6, 5, 8, 3, 5, 9, 1};
+    mergeSort(array, 0, number - 1);
+
+    for (int i = 0; i < number; i++)
+    {
+        printf("%d ", array[i]);
+    }
 
     return 0;
 }
