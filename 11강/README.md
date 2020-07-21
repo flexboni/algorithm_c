@@ -1,4 +1,4 @@
-# 힙 정렬(Heap Sort) [ 실전 알고리즘 강좌(Algorithm Programming Tutorial) #11 ]
+# 힙 정렬(Heap Sort)
 
 힙 정렬(Heap Sort)은 병합 정렬(Merge Sort)와 퀵 정렬(Quick Sort)마늠 빠른 정렬 알고리즘 이다. 또한 실제 고급 프로그래밍 기법으로 갈수록 힙(Heap)의 개념이 자주 등장하기에 반드시 알고 넘어가야하는 개념이다. **힙 정렬** 은 _힙 트리 구조(Heap Tree Structure)를 이용하는 정렬 방법이다._
 
