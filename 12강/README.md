@@ -18,7 +18,7 @@
 
 ---
 
-[[소스 확인]](https://github.com/flexboni/algorithm_c/blob/master/11강/countingSort.cpp)
+[[소스 확인]](https://github.com/flexboni/algorithm_c/blob/master/12강/countingSort.cpp)
 
 ---
 
